@@ -10,7 +10,10 @@ async function loadMetadataFromURL(url: string): Promise<Metadata> {
       return response.json();
     })
     .then(response => {
-      return (response);
+      if (response.url)
+        return (response);
+      else
+        throw ('error!');
     });
   return response;
 };
@@ -24,28 +27,37 @@ export function MetadataComponent() {
     const url = inputRef.current
       ? inputRef.current.state.value
       : '';
+      
+      const metadata = await loadMetadataFromURL(url);
 
-    const metadata = await loadMetadataFromURL(url);
-    setEntries([...entries, metadata]);
+      setEntries([...entries, metadata]);
+      inputRef.current!.setState({value: ''})
   };
+
+  React.useLayoutEffect( ()=> {
+    if (inputRef.current) {
+      inputRef.current.focus();
+    }
+  }, [entries]);
 
   return (
     <Layout.Content style={{ padding: '0 50px' }}>
       <Space />
+      {entries.map(entry => <MetadataCard key={entry.url} metadata={entry} />)}
       <Row gutter={8}>
-        <Col span={18}>
+        <Col span={23}>
           <Input
             onPressEnter={loadMetadata}
             ref={inputRef}
             placeholder="paste url here"
+            allowClear={true}
           />
         </Col>
-        <Col span={6}>
+        <Col span={1} style={{ textAlign: 'right' }}>
           <Button onClick={loadMetadata} type="primary" shape="circle" icon="plus"></Button>
         </Col>
       </Row>
       <Space />
-      {entries.map( entry => <MetadataCard key={entry.url} metadata={entry} />)}
       <pre style={{ color: '#cccccc' }}>{JSON.stringify(entries, null, 2)}</pre>
     </Layout.Content>
   );
@@ -68,9 +80,9 @@ function MetadataCard({ metadata }: { metadata: Metadata }) {
       //   <Icon type="sync" spin={false} />,
       //   <Icon theme="filled" type="delete" />
       // ]}
-      extra={<Icon theme="filled" type="edit" />}
+      extra={<><Icon type="zoom-in" /> <Icon type="zoom-out" /></>}
       bodyStyle={{ overflow: 'hidden' }}
-      style={{marginBottom: '0.5rem'}}
+      style={{ marginBottom: '0.5rem' }}
     >
       <a href={metadata.url} target="_blank">
         <img
