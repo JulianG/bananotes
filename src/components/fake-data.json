@@ -1,0 +1,42 @@
+[
+  {
+    "url": "https://medium.com/google-developers/exploring-es7-decorators-76ecb65fb841",
+    "title": "Exploring EcmaScript Decorators",
+    "image": "https://cdn-images-1.medium.com/max/1200/1*Ifm00n-npUdYWTDbZag3rQ.png",
+    "description": "Iterators, generators and array comprehensions; The similarities between JavaScript and Python continue to increase over time and I for…",
+    "author": "Addy Osmani",
+    "logo": "https://logo.clearbit.com/medium.com"
+  },
+  {
+    "url": "https://twitter.com/ken_wheeler/status/991260561986945025",
+    "title": "GRANDMASTER FLASH CS3 on Twitter",
+    "image": "https://pbs.twimg.com/profile_images/1089674150350852102/d7gWlxOo_400x400.jpg",
+    "description": "“@davedisasterman Check this out for an example https://t.co/34cuRUPrw6 If you use object/array literals in props, referential equality checks dont work”",
+    "author": "ken_wheeler",
+    "logo": "https://logo.clearbit.com/twitter.com"
+  },
+  {
+    "url": "https://codesandbox.io/s/1wvl40omj",
+    "title": "1wvl40omj - CodeSandbox",
+    "image": "https://codesandbox.io/api/v1/sandboxes/1wvl40omj/screenshot.png",
+    "description": "The online code editor tailored for web applications",
+    "author": null,
+    "logo": "https://logo.clearbit.com/codesandbox.io"
+  },
+  {
+    "url": "https://medium.freecodecamp.org/avoiding-the-async-await-hell-c77a0fb71c4c",
+    "title": "How to escape async/await hell",
+    "image": "https://cdn-images-1.medium.com/max/1200/1*_3nDjjPTWn4ohLt96IcwCA.png",
+    "description": "async/await freed us from callback hell, but people have started abusing it — leading to the birth of async/await hell.",
+    "author": "Aditya Agarwal",
+    "logo": "https://logo.clearbit.com/medium.freecodecamp.org"
+  },
+  {
+    "url": "https://egghead.io/lessons/react-sync-the-ui-with-the-app-state-using-mobx-observable-and-observer-in-react",
+    "title": "Sync the UI with the app state using MobX observable and observer in React",
+    "image": "https://d2eip9sf3oo6c2.cloudfront.net/tags/images/000/000/603/thumb/mobx.png",
+    "description": "Applications are driven by state. Many things, like the user interface, should always be consistent with that state.\nMobX is a general purpose FRP library that provides the means to derive, for example, a React based user interface automatically from the state and keep it synchronized.\nThe net resul…",
+    "author": null,
+    "logo": "https://logo.clearbit.com/egghead.io"
+  }
+]
