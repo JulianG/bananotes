@@ -17,7 +17,7 @@ async function loadMetadataFromURL(url: string): Promise<Metadata> {
 
 export function MetadataComponent() {
 
-  const [metadata, setMetadata] = React.useState(makeMetadata());
+  const [entries, setEntries] = React.useState<Metadata[]>([]);
   const inputRef = React.useRef<Input>(null);
 
   const loadMetadata = async () => {
@@ -25,8 +25,8 @@ export function MetadataComponent() {
       ? inputRef.current.state.value
       : '';
 
-    const m = await loadMetadataFromURL(url);
-    setMetadata(m);
+    const metadata = await loadMetadataFromURL(url);
+    setEntries([...entries, metadata]);
   };
 
   return (
@@ -38,7 +38,6 @@ export function MetadataComponent() {
             onPressEnter={loadMetadata}
             ref={inputRef}
             placeholder="paste url here"
-            defaultValue="https://www.theguardian.com/technology/2019/mar/16/five-of-the-best-noise-cancelling-headphones"
           />
         </Col>
         <Col span={6}>
@@ -46,8 +45,8 @@ export function MetadataComponent() {
         </Col>
       </Row>
       <Space />
-      <MetadataCard metadata={metadata} />
-      <pre style={{ color: '#cccccc' }}>{JSON.stringify(metadata, null, 2)}</pre>
+      {entries.map( entry => <MetadataCard key={entry.url} metadata={entry} />)}
+      <pre style={{ color: '#cccccc' }}>{JSON.stringify(entries, null, 2)}</pre>
     </Layout.Content>
   );
 }
@@ -71,6 +70,7 @@ function MetadataCard({ metadata }: { metadata: Metadata }) {
       // ]}
       extra={<Icon theme="filled" type="edit" />}
       bodyStyle={{ overflow: 'hidden' }}
+      style={{marginBottom: '0.5rem'}}
     >
       <a href={metadata.url} target="_blank">
         <img
